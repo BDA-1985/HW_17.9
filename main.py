@@ -49,13 +49,14 @@ try:
     L = list(map(int, input('Введите последовательность чисел через пробел: ').split()))
     element = int(input('Введите произвольное число: '))
 
-    merge_sort(L)
+    sorted_list = merge_sort(L)
+
     if L[0] == L[-1]:
         print('Вы ввели только одно число! Необходимо ввести несколько чисел через пробел')
-    elif element <= L[0] or element >= L[-1]:
-        print(f'Введённое "произвольное число" не соответсвует условиям ввода значений списка от {L[0]} до {L[-1]}')
+    elif element < sorted_list[0] or element > sorted_list[-1]:
+        print(f'Введённое "произвольное число" не соответсвует условиям ввода значений списка от {min(L)} до {max(L)}')
     else:
-        print(binary_search(L, element, L[0], L[-1]))
+        print(binary_search(sorted_list, element, sorted_list[0], sorted_list[-1]))
 
 except:
     print('Должны быть введены только числа через пробел! Попробуйте осуществить ввод повторно.')
